@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Evaluating mathematical reasoning of foundation models in visual contexts">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Sugar</title>
+  <link rel="icon" href="./static/images/sugar.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <img src="static/images/sugar.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+            <span class="sugar" style="vertical-align: middle">Sugar</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            Unified Generative and Discriminative Training for<br>Multi-modal Large Language Models
+          </h2>
+          <div class="is-size-5 publication-authors">
+            <!-- <span class="author-block">Anonymous</span> -->
+            <span class="author-block">
+              <a href="None">Wei Chow</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              <a href="None">Juncheng Li</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              <a href="None">Qifan Yu</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              <a href="None">Kaihang Pan</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              <a href="None">Hao Fei</a><sup style="color:#ffac33;">2</sup>,</span>
+            <span class="author-block">
+              <a href="None">Zhiqi Ge</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <br>
+            <span class="author-block">
+              <a href="None">Shuai Yang</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              <a href="None">Siliang Tang</a><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              <a href="None">Hanwang Zhang</a><sup style="color:#ac33ff;">3</sup>,</span>
+            <span class="author-block">
+              <a href="None">Qianru Sun</a><sup style="color:#ff33ac;">4</sup>
+            </span>
+          </div>
+
+         <div class="is-size-5 publication-authors">
+          <span class="author-block"><sup style="color:#6fbf73;">1</sup>Zhejiang University,</span>
+          <span class="author-block"><sup style="color:#ffac33;">2</sup>National University of Singapore,</span>
+           <br>
+          <span class="author-block"><sup style="color:#ac33ff;">3</sup>Nanyang Technological University,</span>
+          <span class="author-block"><sup style="color:#ff33ac;">4</sup>Singapore Management University</span>
+<!--           <br>-->
+<!--           <br>-->
+<!--          <span class="paper-block"><b style="color:#f41c1c">NeurIPS 2024</b> </span>-->
+        </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="None"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="None"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose <b style="color: purple;">Sugar</b>: <b style="color: purple;">S</b>tructure-induced approach to <b style="color: purple;">u</b>nify <b style="color: purple;">g</b>ener<b style="color: purple;">a</b>tive and disc<b style="color: purple;">r</b>iminative paradigms, leveraging discriminative training to acquire the two abilities above while harnessing the potential of generative training in complex discriminative tasks like image-text interleaved retrieval and fine-grained retrieval.
+          </p>
+          <div class="content has-text-centered">
+            <img src="static/images/model.svg" alt="algebraic reasoning" width="80%"/>
+            <p>(a) <b>Dynamic Sequence Alignment</b>. Semantically matched slices are connected with a blue dashed line. The arrows indicate the direction of the ordered temporal alignment path. With these alignments, we can obtain the similarity between two interleaved inputs for training.
+              <br>
+              (b) <b>Sugar Framework</b>. Sugar supports both multi-modal generation and retrieval simultaneously.</p>
+            <br>
+          </div>
+        </div>
+
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            Specifically, we explicitly impose the semantic relationships between different input samples as an induced structural constraint on the hidden state of MLLMs. We consider the interleaved image-text sequence as the general format of input samples, and then formulate the relationship between any two samples as a dynamic sequence alignment problem within the Dynamic Time Warping framework. In this way, we can explicitly modulate the hidden states of the MLLM by leveraging the semantic relationships between interleaved input sequences, thereby encouraging the MLLM to fully <b>capture the global semantics</b> of the multi-modal inputs.
+          </p>
+          <p>
+            To further enhance the ability to <b>differentiate fine-grained semantics</b>, we integrate a novel kernel into the Dynamic Time Warping framework. Leveraging the strengths of various discriminative pre-trained models, it performs dynamic sequence alignment for diverse embeddings tailored to specific contexts, thus addressing the inherent limitations in fully utilizing input semantics.
+          </p>
+          <div class="content has-text-centered">
+            <img src="static/images/train.svg" alt="algebraic reasoning" width="80%"/>
+            <p>Our structure-induced generative and discriminative training joint training strategy.</p>
+            <br>
+          </div>
+        </div>
+
+        <h2 class="title is-3">Results</h2>
+          <p>Sugar is capable of producing compelling results on various vision-language tasks and has demonstrated some emergent abilities.</p>
+          <br>
+        <h4 class="title is-5">Multimodal Comprehension on 11 Benchmarks</h4>
+          <div class="content has-text-centered">
+            <img src="static/images/table1.png" alt="algebraic reasoning" width="80%"/>
+            <p>Comparison with state-of-the-art methods on 11 visual-language benchmarks</p>
+            <br>
+          </div>
+        <h4 class="title is-5">Complicated Multimodal Comprehension on DEMON</h4>
+          <div class="content has-text-centered">
+            <img src="static/images/table2.png" alt="algebraic reasoning" width="70%"/>
+            <p>Comparision with state-of-the-art method on <a href="https://github.com/DCDmllm/Cheetah">DEMON</a> benchmark</p>
+            <br>
+          </div>
+        <h4 class="title is-5">Zero-shot Cross-modal Information Retrieval</h4>
+           <div class="content has-text-centered">
+            <img src="static/images/table3.png" alt="algebraic reasoning" width="80%"/>
+            <p>Retrieval results compared with previous models, reported by Recall@k for (a)(b) and Accuracy (%) for (c).
+              <b>(a) MSCOCO for image-text retrieval</b>: FROMAGe(d) indicates the FROMAGe model pre-trained only with discriminative loss,
+              and FROMAGe(g+d) indicates joint training with both discriminative and generative losses. <b>(b) VIST for interleaved retrieval</b>: † indicates retrieval
+              over images not previously seen in the story sequence. "5c+4i" is shorthand for 5 captions and 4
+              images, and "5c" is shorthand for 5 captions. <b>(c) Winoground for fine-grained retrieval</b>.</p>
+            <br>
+          </div>
+        <h4 class="title is-5">Retrieval-Augmented Generation</h4>
+           <div class="content has-text-centered">
+            <img src="static/images/table4.png" alt="algebraic reasoning" width="40%"/>
+            <p>Retrieval-Augmented Generation.</p>
+            <br>
+          </div>
+        <h4 class="title is-5">Retrieval for Knowledge-based VQA</h4>
+           <div class="content has-text-centered">
+            <img src="static/images/table5.png" alt="algebraic reasoning" width="50%"/>
+            <p>Comparison between the independent generator + retriever and Sugar on knowledge-based VQA. ’/’ indicates not applicable.</p>
+            <br>
+          </div>
+
+
+        <h4 class="title is-5">Quality Results</h4>
+          <div class="content has-text-justified">
+            <p>Below are selected examples for various image-text tasks. The pink background indicates retrieval results, while the blue background indicates generated results. </p>
+          <div class="content has-text-centered">
+            <img src="static/images/se01_2.png" alt="algebraic reasoning" width="80%"/>
+            <p>Sensitivity with Detailed Semantics</p>
+            <br>
+          </div>
+          <div class="content has-text-centered">
+            <img src="static/images/se01_1.png" alt="algebraic reasoning" width="80%"/>
+            <p>World Knowledge</p>
+            <br>
+          </div>
+          <div class="content has-text-centered">
+            <img src="static/images/se05.png" alt="algebraic reasoning" width="80%"/>
+            <p>Fine-grained Image Discrimination</p>
+            <br>
+          </div>
+
+          <div class="content has-text-centered">
+            <img src="static/images/se02.png" alt="algebraic reasoning" width="80%"/>
+            <p>Multimodal Concept Composition</p>
+            <br>
+          </div>
+          <div class="content has-text-centered">
+            <img src="static/images/se03.png" alt="algebraic reasoning" width="80%"/>
+            <p>Retrieval and Dialog</p>
+            <br>
+          </div>
+          <div class="content has-text-centered">
+            <img src="static/images/se06.png" alt="algebraic reasoning" width="80%"/>
+            <p>Retrieval at Different Place</p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <pre><code>
+      @inproceedings{
+          TODO
+      }
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+<p style="font-size: 14px;">
+  This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
+                                              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+  Commons Attribution-ShareAlike 4.0 International License</a>.
+</p>
+        </div>
+      </div>
+    </div>
+</footer>
+
+</body>
+</html>
